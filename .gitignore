@@ -88,3 +88,6 @@ venv/*
 !.elasticbeanstalk/*.global.yml
 
 .directory
+
+# project wiki (this needs to be a separate git repo)
+docs/*
