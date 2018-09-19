@@ -1,0 +1,3 @@
+[submodule "docs"]
+	path = docs
+	url = https://vdsharma93@bitbucket.org/sudofire/nvats.git/wiki
