@@ -1,11 +1,20 @@
 # nvats
 
 ## Introduction
-This project (based on python3) aims to automate time-consuming chores related to development and allowing developers to focus on the core parts of the project that they are working on.
+This project aims to provide a platform and framework for various command line tools. The platform framework will provide simple APIs for the platform to execute some task such as communication with both users and OSes, Automating APIs on OS level etc.
 
-Some of the tasks it aims to automate are as follows:
+### Goals
+The main goals for this projects are as follows:
+
+* Provide a framework and guidelines to write CLI tools
+* Allow custom CLI tools to be installed and used with this platform
+* Provide core philosophy to write pluggable CLI tools
+
+### Use Cases
+Some of the use cases for this framework are:
 
 * Sand-boxing development
-* automated backups
-* automated deployments
-* automated maintenance
+* Automating deployments
+* Cloud management
+* Automated backups
+* Automated maintenance
