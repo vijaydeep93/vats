@@ -1,7 +1,7 @@
 # nvats
 
 ## Introduction
-This project aims to provide a platform and framework for various command line tools. The platform framework will provide simple APIs for the platform to execute some task such as communication with both users and OSes, Automating APIs on OS level etc.
+This project aims to provide a platform and framework for various command line tools. The framework will provide simple APIs for the platform to execute some task such as communication with both users and OSes, Automating APIs on OS level etc.
 
 ### Goals
 The main goals for this projects are as follows:
