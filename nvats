@@ -16,9 +16,10 @@ Documantation: https://bitbucket.org/sudofire/nvats/wiki/Home
 Author: Vijaydeep Sharma <vijaydeep@sudofire.com>
 """
 
+from platform.io.input import Prompt
 
 def main():
-    print("Welcome to nvats")
+    args = Prompt().parse()
 
 if __name__ == '__main__':
     main()
