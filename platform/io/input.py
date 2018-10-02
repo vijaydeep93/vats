@@ -76,7 +76,7 @@ class BasePrompt(ABC):
     def get_namespace(self):
         return Namespace()
 
-    def add_sub_parser(self, parser, *args, **kwargs):
+    def add_subparser(self, parser, *args, **kwargs):
         return parser.add_subparsers(*args, **kwargs)
 
     def add_command(self, subparser, *args, **kwargs):
@@ -91,6 +91,12 @@ class Prompt(BasePrompt):
     """
     Reads and parses the input given on the command line prompt
     """
+
+    def get_subparser_cores(self, parser):
+        return self.add_subparser(parser, help="Core commands")
+
+    def get_subparser_plugins(self, parser):
+        return self.add_subparser(parser, help="Plugin commands")
 
     def parse(self, streem=sys.argv, namespace=None):
         if not namespace:
