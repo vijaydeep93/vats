@@ -49,11 +49,19 @@ class FileSystem(BaseFileSystem):
         """
         Returns all the packages in folder
         """
-        return [str(sub_path.name) for sub_path in self.path.iterdir() if sub_path.is_dir()]
+
+        packages = []
+
+        for sub_path in self.path.iterdir():
+            str_sub_path = sub_path.name
+            if sub_path.is_dir() and str_sub_path != '__pycache__':
+                packages.append(str_sub_path)
+
+        return packages
 
     def get_modules(self):
         """
         Returns all the modules in a folder
         """
 
-        return [str(sub_path.name) for sub_path in self.path.iterdir() if sub_path.is_suffix == '.py']
+        return [sub_path.name for sub_path in self.path.iterdir() if sub_path.is_suffix == '.py']

@@ -3,17 +3,21 @@ This module deal with all the inputs for the platform.
 """
 
 # python imports
-import argparse, sys
+import argparse
 from abc import ABC, abstractmethod
+from importlib import import_module
 
 # third-party imports
 
 # platform imports
 from commands import Command
-from platform.filesystem.utils import get_core_packages
+from platform.filesystem.utils import (
+    get_core_packages,
+    get_extra_packages
+)
 
 # local imports
-
+from . import Destination
 
 class Namespace(argparse.Namespace):
     """
@@ -64,8 +68,8 @@ class BasePrompt(ABC):
         Adds given arguments in the given parser
         """
 
-        for argument in arguments:
-            parser.add_argument(**argument)
+        for args, kwargs in arguments:
+            parser.add_argument(*args, **kwargs)
 
         return parser
 
@@ -94,15 +98,37 @@ class Prompt(BasePrompt):
     Reads and parses the input given on the command line prompt
     """
 
-    def get_subparser_cores(self, parser):
-        return self.add_subparser(parser, dest="command", help="Core commands")
+    def get_packages(self, type):
+        if type == Command.core:
+            return get_core_packages()
 
-    def get_subparser_plugins(self, parser):
-        return self.add_subparser(parser, dest="command", help="Plugin commands")
+        return get_extra_packages()
 
-    def parse(self, streem=sys.argv, namespace=None):
+    def collect_arguments(self, type):
+        args = {}
+
+        for package in self.get_packages(type):
+            module = import_module('commands.{}.{}'.format(type, package))
+            args[module.name] = module.arguments
+
+        return args
+
+    def add_commands(self, subparser, type):
+        for command, arguments in self.collect_arguments(type).items():
+            command_parser = self.add_command(subparser, command)
+            command_parser = self.add_arguments(command_parser, arguments)
+
+        return subparser
+
+    def parse(self, namespace=None):
         if not namespace:
             namespace = self.get_namespace()
 
         parser = self.get_loaded_parser()
-        return parser.parse_args(streem, namespace=namespace)
+
+        subparser = self.add_subparser(parser, dest=Destination.command)
+
+        subparser = self.add_commands(subparser, type=Command.core)
+        subparser = self.add_commands(subparser, type=Command.extra)
+
+        return parser.parse_args(namespace=namespace)

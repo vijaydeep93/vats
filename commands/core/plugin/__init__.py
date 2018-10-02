@@ -1,9 +1,9 @@
 name = 'plugin'
+arguments = []
 
-arguments = [
-    {
-        'name': 'add',
-        'required': False,
-        'dest': 'sub_command',
-    },
-]
+add = (
+    ('--add',),
+    {'dest': 'repo'}
+)
+
+arguments.append(add)

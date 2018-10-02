@@ -16,3 +16,8 @@ def get_core_packages():
     path = Paths.core_packages
 
     return FileSystem(path).get_packages()
+
+def get_extra_packages():
+    path = Paths.extra_packages
+
+    return FileSystem(path).get_packages()

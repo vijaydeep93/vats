@@ -20,6 +20,7 @@ from platform.io.input import Prompt
 
 def main():
     args = Prompt().parse()
+    print(args)
 
 if __name__ == '__main__':
     main()

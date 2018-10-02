@@ -4,4 +4,4 @@ class Command(object):
     """
 
     core = "core"
-    plugin = "plugin"
+    extra = "extra"
