@@ -12,7 +12,7 @@ from abc import ABC, abstractmethod
 
 # local imports
 
-class BaseFSPath(ABC):
+class BaseFileSystem(ABC):
     """
     Base class dealing filesystem paths.
 
@@ -37,7 +37,7 @@ class BaseFSPath(ABC):
         return [sub_path for sub_path in self.path.iterdir() if sub_path.is_dir()]
 
 
-class FSPath(BaseFSPath):
+class FileSystem(BaseFileSystem):
     """
     Class dealing with the spacifice requirement
     """

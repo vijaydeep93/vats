@@ -9,9 +9,10 @@ filesystem utils
 # platform imports
 
 # local imports
-from .path import FSPath
+from .filesystem import FileSystem
+from . import Paths
 
 def get_core_packages():
-    path = 'commands/core'
+    path = Paths.core_packages
 
-    return FSPath(path).get_packages()
+    return FileSystem(path).get_packages()

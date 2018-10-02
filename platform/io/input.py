@@ -9,6 +9,7 @@ from abc import ABC, abstractmethod
 # third-party imports
 
 # platform imports
+from commands import Command
 from platform.filesystem.utils import get_core_packages
 
 # local imports
