@@ -9,6 +9,7 @@ from abc import ABC, abstractmethod
 # third-party imports
 
 # platform imports
+from platform.filesystem.utils import get_core_packages
 
 # local imports
 
@@ -93,10 +94,10 @@ class Prompt(BasePrompt):
     """
 
     def get_subparser_cores(self, parser):
-        return self.add_subparser(parser, help="Core commands")
+        return self.add_subparser(parser, dest="command", help="Core commands")
 
     def get_subparser_plugins(self, parser):
-        return self.add_subparser(parser, help="Plugin commands")
+        return self.add_subparser(parser, dest="command", help="Plugin commands")
 
     def parse(self, streem=sys.argv, namespace=None):
         if not namespace:
