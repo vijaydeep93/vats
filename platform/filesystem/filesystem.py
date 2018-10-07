@@ -3,6 +3,7 @@ filesystem module dealing with paths
 """
 
 # python imports
+import shutil
 from pathlib import Path
 from abc import ABC, abstractmethod
 
@@ -23,14 +24,21 @@ class BaseFileSystem(ABC):
 
     path = None
 
-    def __str__(self):
-        return self.path
-
     def __init__(self, path):
         if isinstance(path, Path):
             self.path = path
         else:
             self.path = Path(path)
+
+    def __str__(self):
+        return str(self.path)
+
+    @property
+    def name(self):
+        if self.path.is_dir():
+            return self.path.stem
+
+        return self.path.name
 
     def get_sub_dirs(self):
         """
@@ -38,6 +46,20 @@ class BaseFileSystem(ABC):
         """
 
         return [sub_path for sub_path in self.path.iterdir() if sub_path.is_dir()]
+
+    def rm_dir(self):
+        """
+        Removes the dir on path
+        """
+
+        shutil.rmtree(self.path)
+
+    def join_path(self, path_to_join):
+        """
+        Joins paths
+        """
+
+        self.path = self.path.joinpath(path_to_join)
 
 
 class FileSystem(BaseFileSystem):
