@@ -18,12 +18,12 @@ class Command(BaseCommand):
 
     add = (
         ('--add',),
-        {'dest': 'add_repo', 'help': 'Add a repo as a plugin. Requires a git link'}
+        {'dest': 'repo', 'help': 'Add a repo as a plugin. Requires a git link'}
     )
 
     remove = (
         ('--rm',),
-        {'dest': 'rm_plugin', 'help': 'Removes a plugin. Requires a plugin name'}
+        {'dest': 'plugin', 'help': 'Removes a plugin. Requires a plugin name'}
     )
 
     list = (

@@ -15,9 +15,9 @@ class Plugin(object):
     removing and listing plugins
     """
 
-    def __init__(self, add_repo, rm_plugin, list, *args, **kwargs):
-        self.plugin_to_add = add_repo
-        self.plugin_to_remove = rm_plugin
+    def __init__(self, repo, plugin, list, *args, **kwargs):
+        self.plugin_to_add = repo
+        self.plugin_to_remove = plugin
         self.is_list = list
 
     def list_plugin(self):
