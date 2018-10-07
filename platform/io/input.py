@@ -166,7 +166,7 @@ class Prompt(BasePrompt):
 
         parser = self.get_loaded_parser()
 
-        subparser = self.add_subparser(parser, dest='command')
+        subparser = self.add_subparser(parser, dest='command', required=True)
 
         subparser = self.add_commands(subparser, type=Command.core)
         subparser = self.add_commands(subparser, type=Command.extra)
