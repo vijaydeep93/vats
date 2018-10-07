@@ -1,21 +1,40 @@
-name = 'plugin'
-arguments = []
+# python imports
 
-add = (
-    ('--add',),
-    {'dest': 'add_repo', 'help': 'Add a repo as a plugin. Requires a git link'}
-)
+# third-party imports
 
-remove = (
-    ('--rm',),
-    {'dest': 'rm_plugin', 'help': 'Removes a plugin. Requires a plugin name'}
-)
+# platform imports
+from platform.plugins import BaseCommand
 
-list = (
-    ('--list',),
-    {'action': 'store_true', 'help': 'Lists all the extra install plugin'}
-)
+# local imports
 
-arguments.append(add)
-arguments.append(remove)
-arguments.append(list)
+class Command(BaseCommand):
+    """
+    Class to hook plugin to platform
+    """
+
+    name = 'plugin'
+
+    add = (
+        ('--add',),
+        {'dest': 'add_repo', 'help': 'Add a repo as a plugin. Requires a git link'}
+    )
+
+    remove = (
+        ('--rm',),
+        {'dest': 'rm_plugin', 'help': 'Removes a plugin. Requires a plugin name'}
+    )
+
+    list = (
+        ('--list',),
+        {'action': 'store_true', 'help': 'Lists all the extra install plugin'}
+    )
+
+    def get_arguments(self):
+        return [
+            self.add,
+            self.remove,
+            self.list
+        ]
+
+    def execute(self, *agrs, **kwargs):
+        print('executing')

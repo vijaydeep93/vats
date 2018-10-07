@@ -1,4 +1,4 @@
-class Command(object):
+class CommandType(object):
     """
     Sets the command types
     """

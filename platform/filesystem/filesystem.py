@@ -23,6 +23,9 @@ class BaseFileSystem(ABC):
 
     path = None
 
+    def __str__(self):
+        return self.path
+
     def __init__(self, path):
         if isinstance(path, Path):
             self.path = path
