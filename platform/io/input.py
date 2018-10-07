@@ -5,17 +5,11 @@ This module deal with all the inputs for the platform.
 # python imports
 import argparse
 from abc import ABC, abstractmethod
-from importlib import import_module
 
 # third-party imports
 
 # platform imports
-from commands import CommandType
 from platform.plugins import Plugins
-from platform.filesystem.utils import (
-    get_core_packages,
-    get_extra_packages
-)
 
 # local imports
 

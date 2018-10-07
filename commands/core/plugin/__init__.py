@@ -36,5 +36,5 @@ class Command(BaseCommand):
             self.list
         ]
 
-    def execute(self, *agrs, **kwargs):
-        print('executing')
+    def execute(self, *args, **kwargs):
+        print(kwargs)

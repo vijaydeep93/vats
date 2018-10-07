@@ -21,13 +21,9 @@ Author: Vijaydeep Sharma <vijaydeep@sudofire.com>
 # third-party imports
 
 # platform imports
-from platform.io.input import Prompt
+from platform.operations import Operation
 
 # local imports
 
-def main():
-    args = Prompt().parse()
-    print(args)
-
 if __name__ == '__main__':
-    main()
+    Operation().execute()
