@@ -16,7 +16,14 @@ Documantation: https://bitbucket.org/sudofire/nvats/wiki/Home
 Author: Vijaydeep Sharma <vijaydeep@sudofire.com>
 """
 
+# python imports
+
+# third-party imports
+
+# platform imports
 from platform.io.input import Prompt
+
+# local imports
 
 def main():
     args = Prompt().parse()
