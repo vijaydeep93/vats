@@ -58,6 +58,11 @@ class BasePrompt(ABC):
         to add more arguments in child classes just override the arguments property.
         """
 
+        ######################################################
+        # should have following format
+        # [((posinal agrs), {keyword arguments dict}),
+        # ((posinal agrs), {keyword arguments dict})]
+        ######################################################
         default_arguments = []
 
         return default_arguments + self.arguments
@@ -82,9 +87,20 @@ class BasePrompt(ABC):
         return Namespace()
 
     def add_subparser(self, parser, *args, **kwargs):
+        """
+        Adds subparser for commands
+        """
+
         return parser.add_subparsers(*args, **kwargs)
 
     def add_command(self, subparser, *args, **kwargs):
+        """
+        Adds a command to given subparser.
+
+        A command is sub-module or a package that can be added to
+        enhance the funcnality of the platform.
+        """
+
         return subparser.add_parser(*args, **kwargs)
 
     @abstractmethod
@@ -98,21 +114,36 @@ class Prompt(BasePrompt):
     """
 
     def get_packages(self, type):
+        """
+        Returns all the packages of the given type
+        """
+
         if type == Command.core:
             return get_core_packages()
 
         return get_extra_packages()
 
     def collect_arguments(self, type):
+        """
+        Returns the collected arguments from the given type of packages
+        """
+
         args = {}
 
         for package in self.get_packages(type):
+            # import a module from a package
             module = import_module('commands.{}.{}'.format(type, package))
+
+            # add to args
             args[module.name] = module.arguments
 
         return args
 
     def add_commands(self, subparser, type):
+        """
+        Adds the commands(packages/plugins) to given parsers of given type
+        """
+
         for command, arguments in self.collect_arguments(type).items():
             command_parser = self.add_command(subparser, command)
             command_parser = self.add_arguments(command_parser, arguments)
@@ -120,6 +151,13 @@ class Prompt(BasePrompt):
         return subparser
 
     def parse(self, namespace=None):
+        """
+        Returns a Namespace object after loading all the
+        commands(packages/plugins) and parsing the sys.agrv
+
+
+        """
+
         if not namespace:
             namespace = self.get_namespace()
 
