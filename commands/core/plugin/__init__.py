@@ -6,6 +6,7 @@
 from platform.plugins import BaseCommand
 
 # local imports
+from .plugin import Plugin
 
 class Command(BaseCommand):
     """
@@ -13,6 +14,7 @@ class Command(BaseCommand):
     """
 
     name = 'plugin'
+    description = "Plugin to add, remove, list other plugins"
 
     add = (
         ('--add',),
@@ -36,5 +38,5 @@ class Command(BaseCommand):
             self.list
         ]
 
-    def execute(self, *args, **kwargs):
-        print(kwargs)
+    def hook(self, *args, **kwargs):
+        Plugin(**kwargs).execute()

@@ -32,4 +32,4 @@ class Operation(object):
         """
 
         command, kwargs = self.get_prompt()
-        command.execute(**kwargs)
+        command.hook(**kwargs)
