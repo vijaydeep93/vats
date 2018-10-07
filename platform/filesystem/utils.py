@@ -1,4 +1,8 @@
 """
+Copyright (C) 2018 Vijaydeep Sharma <vijaydeep@sudofire.com>
+
+License: https://bitbucket.org/sudofire/nvats/wiki/license.txt
+
 filesystem utils
 """
 
@@ -25,7 +29,7 @@ def get_extra_packages():
     """
     Returns a list of packages of extra commands added
     """
-    
+
     path = Paths.extra_packages
 
     return FileSystem(path).get_packages()

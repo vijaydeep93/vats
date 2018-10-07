@@ -18,3 +18,7 @@ Some of the use cases for this framework are:
 * Cloud management
 * Automated backups
 * Automated maintenance
+
+### license
+
+This work is licensed under a [GNU GPL v2](https://bitbucket.org/sudofire/nvats/wiki/license.txt)
