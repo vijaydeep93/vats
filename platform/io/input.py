@@ -17,7 +17,6 @@ from platform.filesystem.utils import (
 )
 
 # local imports
-from . import Destination
 
 class Namespace(argparse.Namespace):
     """
@@ -126,7 +125,7 @@ class Prompt(BasePrompt):
 
         parser = self.get_loaded_parser()
 
-        subparser = self.add_subparser(parser, dest=Destination.command)
+        subparser = self.add_subparser(parser, dest='command')
 
         subparser = self.add_commands(subparser, type=Command.core)
         subparser = self.add_commands(subparser, type=Command.extra)
