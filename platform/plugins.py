@@ -80,4 +80,4 @@ class Plugins(object):
             command = self.import_command(CommandType.extra, package)
             commands.append(command)
 
-        return commands
+        return [command for command in commands if command]

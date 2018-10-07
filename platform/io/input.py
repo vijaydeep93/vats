@@ -122,10 +122,9 @@ class Prompt(BasePrompt):
         """
 
         for command in commands:
-            if command:
-                command_parser = self.add_command(subparser, command.name, help=command.description)
-                command_parser = self.add_arguments(command_parser, command.get_arguments())
-                command_parser = self.set_defaults(command_parser, command=command)
+            command_parser = self.add_command(subparser, command.name, help=command.description)
+            command_parser = self.add_arguments(command_parser, command.get_arguments())
+            command_parser = self.set_defaults(command_parser, command=command)
 
         return subparser
 

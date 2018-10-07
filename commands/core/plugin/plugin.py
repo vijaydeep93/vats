@@ -46,9 +46,19 @@ class Plugin(object):
 
             print('Success! Added plugin dir {}'.format(dir_name))
 
+    def rm_plugin(self):
+        dir = filesystem.FileSystem(Paths.extra_packages)
+        dir.join_path(self.plugin_to_remove)
+        dir.rm_dir()
+
+        print('Success! Removed plugin {}'.format(dir.name))
+
     def execute(self):
         if self.is_list:
             self.list_plugin()
 
         if self.plugin_to_add:
             self.add_plugin()
+
+        if self.plugin_to_remove:
+            self.rm_plugin()
