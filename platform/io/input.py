@@ -10,7 +10,8 @@ from importlib import import_module
 # third-party imports
 
 # platform imports
-from commands import Command
+from commands import CommandType
+from platform.plugins import Plugins
 from platform.filesystem.utils import (
     get_core_packages,
     get_extra_packages
@@ -103,6 +104,14 @@ class BasePrompt(ABC):
 
         return subparser.add_parser(*args, **kwargs)
 
+    def set_defaults(self, subparser, *args, **kwargs):
+        """
+        Add defaults for a parser
+        """
+
+        subparser.set_defaults(*args, **kwargs)
+        return subparser
+
     @abstractmethod
     def parse(self):
         pass
@@ -113,62 +122,30 @@ class Prompt(BasePrompt):
     Reads and parses the input given on the command line prompt
     """
 
-    def get_packages(self, type):
-        """
-        Returns all the packages of the given type
-        """
-
-        if type == Command.core:
-            return get_core_packages()
-
-        return get_extra_packages()
-
-    def collect_arguments(self, type):
-        """
-        Returns the collected arguments from the given type of packages
-        """
-
-        args = {}
-
-        for package in self.get_packages(type):
-            try:
-                # import a module from a package
-                module = import_module('commands.{}.{}'.format(type, package))
-
-                # add to args
-                args[module.name] = module.arguments
-            except Exception as e:
-                print("The package '{}' seems to be corrupt. Error: '{}'".format(package, e))
-
-        return args
-
-    def add_commands(self, subparser, type):
+    def add_commands(self, subparser, commands):
         """
         Adds the commands(packages/plugins) to given parsers of given type
         """
 
-        for command, arguments in self.collect_arguments(type).items():
-            command_parser = self.add_command(subparser, command)
-            command_parser = self.add_arguments(command_parser, arguments)
+        for command in commands:
+            if command:
+                command_parser = self.add_command(subparser, command.name)
+                command_parser = self.add_arguments(command_parser, command.get_arguments())
+                command_parser = self.set_defaults(command_parser, command=command)
 
         return subparser
 
-    def parse(self, namespace=None):
+    def parse(self):
         """
         Returns a Namespace object after loading all the
         commands(packages/plugins) and parsing the sys.agrv
-
-
         """
 
-        if not namespace:
-            namespace = self.get_namespace()
+        plugins = Plugins().get_plugin_commands()
 
+        namespace = self.get_namespace()
         parser = self.get_loaded_parser()
-
-        subparser = self.add_subparser(parser, dest='command')
-
-        subparser = self.add_commands(subparser, type=Command.core)
-        subparser = self.add_commands(subparser, type=Command.extra)
+        subparser = self.add_subparser(parser, dest='name', required=True)
+        subparser = self.add_commands(subparser, commands=plugins)
 
         return parser.parse_args(namespace=namespace)
