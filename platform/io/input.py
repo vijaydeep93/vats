@@ -131,11 +131,14 @@ class Prompt(BasePrompt):
         args = {}
 
         for package in self.get_packages(type):
-            # import a module from a package
-            module = import_module('commands.{}.{}'.format(type, package))
+            try:
+                # import a module from a package
+                module = import_module('commands.{}.{}'.format(type, package))
 
-            # add to args
-            args[module.name] = module.arguments
+                # add to args
+                args[module.name] = module.arguments
+            except Exception as e:
+                print("The package '{}' seems to be corrupt. Error: '{}'".format(package, e))
 
         return args
 
