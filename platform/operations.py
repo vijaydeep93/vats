@@ -17,7 +17,9 @@ from platform.io.input import Prompt
 
 class Operation(object):
     """
-    Entry class of the program
+    Entry class of the program.
+
+    Binds the command line promt with command plugin.
     """
 
     def get_prompt(self):
@@ -25,9 +27,14 @@ class Operation(object):
         Returns the command and args
         """
 
+        # capture the CLI promt input
         args = Prompt().parse()
+
+        # get the top-level command
         command = args.command
         del args.command
+
+        # return the command and its args as dict
         return command, vars(args)
 
     def execute(self):
@@ -36,4 +43,6 @@ class Operation(object):
         """
 
         command, kwargs = self.get_prompt()
+
+        # excute the command with given parameter
         command.hook(**kwargs)

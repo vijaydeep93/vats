@@ -9,10 +9,13 @@
 (_-<| || |/ _` |/ _ \ |  _| | || '_|/ -_)
 /__/ \_,_|\__,_|\___/ |_|   |_||_|  \___|
 
+n vital automation tools and services (nvats)
+
 This project aims to provide a platform and framework for various
-command line tools. The framework will provide simple APIs for the
-platform to execute some task such as communication with both users
-and OSes, Automating APIs on OS level etc.
+command line tools and services to automate a lot of things. The
+framework will provide simple APIs for the platform to execute
+some task such as communication with both users and OSes, Automating
+APIs on OS level etc.
 
 Copyright (C) 2018 Vijaydeep Sharma <vijaydeep@sudofire.com>
 
@@ -43,5 +46,5 @@ from platform.operations import Operation
 
 # local imports
 
-if __name__ == '__main__':
+if __name__ == '__main__': # entry point
     Operation().execute()

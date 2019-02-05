@@ -138,11 +138,15 @@ class Prompt(BasePrompt):
         commands(packages/plugins) and parsing the sys.agrv
         """
 
+        # get all the available commands
         plugins = Plugins().get_plugin_commands()
 
+        # object where all the arguments are kept after parsing
         namespace = self.get_namespace()
+
         parser = self.get_loaded_parser()
-        subparser = self.add_subparser(parser, dest='name', required=True)
+        subparser = self.add_subparser(parser, dest='name', required=True) # would store the command itself.
         subparser = self.add_commands(subparser, commands=plugins)
 
+        # return the namespace
         return parser.parse_args(namespace=namespace)

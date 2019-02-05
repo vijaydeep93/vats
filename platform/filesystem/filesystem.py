@@ -29,6 +29,7 @@ class BaseFileSystem(ABC):
     path = None
 
     def __init__(self, path):
+        # if not 'path' then convert to path
         if isinstance(path, Path):
             self.path = path
         else:
