@@ -1,12 +1,12 @@
-# nvats
+# n vital automation tools and services (nvats)
 
 ## Introduction
-This project aims to provide a platform and framework for various command line tools. The framework will provide simple APIs for the platform to execute some task such as communication with both users and OSes, Automating APIs on OS level etc.
+This project aims to provide a platform and framework for various command line tools and services to automate stuff. The framework will provide simple APIs for the platform to execute some task such as communication with both users and OSes, Automating APIs on OS level etc. 'n' in the name mean that it can handle 'n' number of tasks.
 
 ### Goals
 The main goals for this projects are as follows:
 
-* Provide a framework and guidelines to write CLI tools
+* Provide a framework and guidelines to write CLI tools called plugins
 * Allow custom CLI tools to be installed and used with this platform
 * Provide core philosophy to write pluggable CLI tools
 
