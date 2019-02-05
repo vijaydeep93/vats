@@ -44,6 +44,7 @@ class Plugin(object):
 
         new_sub_dirs = set(extra_dir_path.get_sub_dirs()) - extra_sub_dirs # newly added dir
 
+        # 'set' object does not support indexing, so looping
         for dir in map(filesystem.FileSystem, new_sub_dirs):
             dir_name = dir.name
 
