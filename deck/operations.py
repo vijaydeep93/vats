@@ -11,7 +11,7 @@ File handling platform operations
 # third-party imports
 
 # platform imports
-from platform.io.input import Prompt
+from deck.io.input import Prompt
 
 # local imports
 

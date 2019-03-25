@@ -10,8 +10,8 @@ import subprocess
 # third-party imports
 
 # platform imports
-from platform.plugins import Plugins
-from platform.filesystem import Paths, filesystem
+from deck.plugins import Plugins
+from deck.filesystem import Paths, filesystem
 
 # local imports
 

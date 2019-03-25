@@ -88,3 +88,5 @@ venv/*
 !.elasticbeanstalk/*.global.yml
 
 .directory
+commands/extra/*
+.idea
