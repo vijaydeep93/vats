@@ -42,7 +42,7 @@ License: https://bitbucket.org/sudofire/nvats/wiki/license.txt
 # third-party imports
 
 # platform imports
-from platform.operations import Operation
+from deck.operations import Operation
 
 # local imports
 

@@ -9,7 +9,7 @@ License: https://bitbucket.org/sudofire/nvats/wiki/license.txt
 # third-party imports
 
 # platform imports
-from platform.plugins import BaseCommand
+from deck.plugins import BaseCommand
 
 # local imports
 from .plugin import Plugin

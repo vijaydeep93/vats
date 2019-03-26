@@ -14,7 +14,7 @@ from importlib import import_module
 
 # platform imports
 from commands import CommandType
-from platform.filesystem.utils import (
+from deck.filesystem.utils import (
     get_core_packages,
     get_extra_packages
 )

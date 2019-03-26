@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 # third-party imports
 
 # platform imports
-from platform.plugins import Plugins
+from deck.plugins import Plugins
 
 # local imports
 
@@ -145,7 +145,8 @@ class Prompt(BasePrompt):
         namespace = self.get_namespace()
 
         parser = self.get_loaded_parser()
-        subparser = self.add_subparser(parser, dest='name', required=True) # would store the command itself.
+        subparser = self.add_subparser(parser, dest='name') # would store the command itself.
+        subparser.required = True
         subparser = self.add_commands(subparser, commands=plugins)
 
         # return the namespace
