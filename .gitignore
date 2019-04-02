@@ -73,20 +73,15 @@ media/*
 # static_root
 static_root/*
 
+# databases
 db.sqlite3
 
 # virtualenv
 venv/*
 
-# migrations
-*/migrations/*
-!*/migrations/__init__.py
-
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
-
 .directory
-commands/extra/*
 .idea
+
+# extra commands
+commands/extra/*
+!commands/extra/__init__.py
