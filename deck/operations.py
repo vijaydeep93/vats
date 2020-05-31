@@ -1,7 +1,7 @@
 """
-Copyright (C) 2018 Vijaydeep Sharma <vijaydeep@sudofire.com>
+Copyright (C) 2018 Vijaydeep Sharma <vdsharma93@gmail.com>
 
-License: https://bitbucket.org/sudofire/nvats/wiki/license.txt
+License: https://github.com/vijaydeep93/vats/wiki/license.txt
 
 File handling platform operations
 """
