@@ -8,7 +8,7 @@ License: https://github.com/vijaydeep93/vats/wiki/license.txt
 
 # third-party imports
 
-# platform imports
+# deck imports
 from deck.plugins import BaseCommand
 
 # local imports
@@ -16,7 +16,7 @@ from .plugin import Plugin
 
 class Command(BaseCommand):
     """
-    Class to hook plugin to platform
+    Class to hook plugin to deck
     """
 
     name = 'plugin'

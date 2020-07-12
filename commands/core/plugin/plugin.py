@@ -9,7 +9,7 @@ import subprocess
 
 # third-party imports
 
-# platform imports
+# deck imports
 from deck.plugins import Plugins
 from deck.filesystem import Paths, filesystem
 

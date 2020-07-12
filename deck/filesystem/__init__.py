@@ -11,13 +11,13 @@ class Paths(object):
 
     #################################################################
     # Core packages are provided as a part of the software upon
-    # installation and are crutial for normal working of the
+    # installation and are crucial for normal working of
     # the software.
     #################################################################
     core_packages = 'commands/core'
 
     #################################################################
-    # Extra packages are the funcnalities added by the users for
+    # Extra packages are the functionalities added by the users for
     # custom behavior
     #################################################################
     extra_packages = 'commands/extra'

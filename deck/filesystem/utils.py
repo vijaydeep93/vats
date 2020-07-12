@@ -10,7 +10,7 @@ filesystem utils
 
 # third-party imports
 
-# platform imports
+# deck imports
 
 # local imports
 from .filesystem import FileSystem

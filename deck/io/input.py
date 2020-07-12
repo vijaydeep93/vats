@@ -12,7 +12,7 @@ from abc import ABC, abstractmethod
 
 # third-party imports
 
-# platform imports
+# deck imports
 from deck.plugins import Plugins
 
 # local imports
@@ -48,7 +48,7 @@ class BasePrompt(ABC):
         if self.parser:
             return self.parser
 
-        parser_description = "Welcome to nvats. It rocks!"
+        parser_description = 'Welcome to vats. It rocks!'
         return argparse.ArgumentParser(description=parser_description)
 
     def _get_arguments(self):
@@ -59,8 +59,8 @@ class BasePrompt(ABC):
 
         ######################################################
         # should have following format
-        # [((posinal agrs), {keyword arguments dict}),
-        # ((posinal agrs), {keyword arguments dict})]
+        # [((positional agrs), {keyword arguments dict}),
+        # ((positional agrs), {keyword arguments dict})]
         ######################################################
         default_arguments = []
 
@@ -97,7 +97,7 @@ class BasePrompt(ABC):
         Adds a command to given subparser.
 
         A command is sub-module or a package that can be added to
-        enhance the funcnality of the platform.
+        enhance the functionality of the platform.
         """
 
         return subparser.add_parser(*args, **kwargs)

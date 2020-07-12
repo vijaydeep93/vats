@@ -10,7 +10,7 @@ File handling platform operations
 
 # third-party imports
 
-# platform imports
+# deck imports
 from deck.io.input import Prompt
 
 # local imports
@@ -19,7 +19,7 @@ class Operation(object):
     """
     Entry class of the program.
 
-    Binds the command line promt with command plugin.
+    Binds the command line prompt with command plugin.
     """
 
     def get_prompt(self):
@@ -27,7 +27,7 @@ class Operation(object):
         Returns the command and args
         """
 
-        # capture the CLI promt input
+        # capture the CLI prompt input
         args = Prompt().parse()
 
         # get the top-level command
@@ -44,5 +44,5 @@ class Operation(object):
 
         command, kwargs = self.get_prompt()
 
-        # excute the command with given parameter
+        # execute the command with given parameter
         command.hook(**kwargs)

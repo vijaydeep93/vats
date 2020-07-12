@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 
 # third-party imports
 
-# platform imports
+# deck imports
 
 # local imports
 

@@ -12,7 +12,7 @@ from importlib import import_module
 
 # third-party imports
 
-# platform imports
+# deck imports
 from commands import CommandType
 from deck.filesystem.utils import (
     get_core_packages,
@@ -43,7 +43,7 @@ class BaseCommand(ABC):
     @abstractmethod
     def hook(self, *agrs, **kwargs):
         """
-        hooks the command and its argument with a funtion to excute.
+        hooks the command and its argument with a function to execute.
         """
         pass
 
